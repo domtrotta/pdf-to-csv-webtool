@@ -3,7 +3,7 @@ import pandas as pd
 import re
 
 def extract_tables_from_pdf(pdf_path):
-    tables = camelot.read_pdf(pdf_path, pages='2-end')
+    tables = camelot.read_pdf(pdf_path, pages='2-end', flavor='lattice')
     return tables
 
 def process_table(tables):
