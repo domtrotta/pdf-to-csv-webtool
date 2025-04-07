@@ -19,7 +19,7 @@
   <div class="bg-gray-800 shadow-2xl rounded-2xl p-8 w-full max-w-md">
     <h2 class="text-2xl font-bold text-center mb-6">📄 Ofcom PDF to CSV</h2>
 
-    <form action="/convert" method="post" enctype="multipart/form-data" class="space-y-4">
+    <form id="uploadForm" action="/convert" method="post" enctype="multipart/form-data" target="downloadFrame" class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-2" for="pdf">Upload your PDF</label>
         <input
@@ -39,18 +39,25 @@
   <!-- SweetAlert Loader -->
   <script>
     const form = document.querySelector("form");
-
+  
     form.addEventListener("submit", function (e) {
-      Swal.fire({
+      const alert = Swal.fire({
         title: "Converting...",
         text: "Please wait while we process your PDF",
         allowOutsideClick: false,
+        showConfirmButton: false,
         didOpen: () => {
           Swal.showLoading();
         },
       });
+  
+      // Automatically close after 4 seconds (adjust as needed)
+      setTimeout(() => {
+        Swal.close();
+      }, 4000);
     });
   </script>
+  
 
 </body>
 </html>
