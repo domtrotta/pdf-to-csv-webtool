@@ -3,8 +3,17 @@ import pandas as pd
 import re
 
 def extract_tables_from_pdf(pdf_path):
-    tables = camelot.read_pdf(pdf_path, pages='2-end', flavor='lattice')
+    try:
+        # Try lattice first (no Ghostscript required)
+        tables = camelot.read_pdf(pdf_path, pages='2-end', flavor='lattice')
+        if tables.n == 0:
+            raise ValueError("No tables found with lattice")
+    except Exception as e:
+        # Fallback to stream only if needed (will raise Ghostscript error on Render)
+        print("Lattice failed, trying stream... Error:", e)
+        tables = camelot.read_pdf(pdf_path, pages='2-end', flavor='stream')
     return tables
+
 
 def process_table(tables):
     all_data = []
