@@ -30,3 +30,4 @@ if __name__ == "__main__":
     pdf_path = "sample.pdf"
     csv_path = "output.csv"
     main(pdf_path, csv_path)
+

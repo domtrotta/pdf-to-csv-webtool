@@ -1,45 +1,57 @@
-# 📄 Ofcom PDF to CSV Web Tool
+# Ofcom PDF to CSV Converter (Web Tool)
 
-A sleek, web-based tool to convert structured Ofcom-style PDF documents into clean CSVs — built for quick AV/event tech workflows.
+This is a self-hosted web tool built with Flask and pdfplumber to extract licensed frequency data from Ofcom-issued PDFs. It scans the entire document and extracts all valid frequencies (e.g., `654.22500 MHz`) into a clean, sorted CSV file.
 
----
-
-### 🔗 Try It Live
-
-👉 [https://pdf-to-csv-webtool.onrender.com](https://pdf-to-csv-webtool.onrender.com)
-
-Upload an Ofcom PDF, extract licensed frequency data, and download it as a CSV file ready for use.
+![App Screenshot](https://pdf.trottadomenico.co.uk/static/preview.png)
 
 ---
 
-### 🛠️ Features
+### 🌐 Live Demo
+👉 [https://pdf.trottadomenico.co.uk](https://pdf.trottadomenico.co.uk)
 
-- 📤 Upload PDF files directly from your browser
-- 📊 Extracts frequency data (from page 2 onward)
-- 📁 Outputs a clean CSV
-- 🌙 Dark mode UI + mobile-friendly
-- 💬 SweetAlert spinner feedback
-- 🔧 Designed for AV/RF techs using Inclusion Groups
+[![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fpdf.trottadomenico.co.uk)](https://pdf.trottadomenico.co.uk)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-### 📥 What to Do After You Download the CSV
-
-Once you’ve converted your PDF and downloaded the CSV:
-
-1. Go to your coordination platform or system
-2. Create a new **Inclusion Group**
-3. Upload the CSV into that group
-4. ✅ Make sure to **assign the correct devices** to the Inclusion Group so the frequencies apply correctly!
-
-> Without adding devices, your coordination will not reflect the CSV data.
+### ✅ Features
+- Upload Ofcom PDF files from your browser
+- Extracts frequency data using text parsing (regex)
+- Cleans, deduplicates, and sorts results
+- Exports a downloadable CSV
+- Mobile-friendly UI with status popups
 
 ---
 
-### 💻 Run Locally (Dev Mode)
+### 🧪 How to Use
+1. Visit the live tool: [https://pdf.trottadomenico.co.uk](https://pdf.trottadomenico.co.uk)
+2. Upload your Ofcom-issued frequency schedule (PDF)
+3. Click **Convert to CSV**
+4. The CSV will download automatically with all valid frequencies extracted
 
-```bash
-git clone https://github.com/domtrotta/pdf-to-csv-webtool.git
-cd pdf-to-csv-webtool
-pip install -r requirements.txt
-python app.py
+---
+
+### 📥 What to Do After Download
+After downloading the CSV:
+
+- Go to your RF coordination or audio software
+- Upload the CSV file to your **Inclusion Group**
+- Remember to assign your devices to the group so frequencies apply
+
+---
+
+### ⚙ Tech Stack
+- Python + Flask
+- pdfplumber (no Camelot or Ghostscript needed)
+- TailwindCSS for frontend
+- SweetAlert2 for interactive feedback
+- Gunicorn + Nginx on Ubuntu VPS
+
+---
+
+### 🧑‍💻 Maintained by Dom Trotta
+For support or ideas, feel free to reach out or fork the repo.
+
+---
+
+> "Tools like this save time in high-pressure show environments. Built for real workflows, by someone who gets it."
