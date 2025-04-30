@@ -9,15 +9,19 @@
 </head>
 <body class="bg-gray-900 text-white min-h-screen flex items-center justify-center px-4">
 
-  <!-- Logo & Branding -->
+  <!-- Branding -->
   <div class="absolute top-6 left-6 flex items-center gap-3">
-    <img src="/static/logo.JPG" alt="Logo" class="h-8 w-8">
+    <img src="/static/logo.JPG" alt="Logo" class="h-8 w-8 rounded-full">
     <span class="text-lg font-bold text-white tracking-tight">Dom Trotta Tools</span>
   </div>
 
   <!-- Upload Card -->
   <div class="bg-gray-800 shadow-2xl rounded-2xl p-8 w-full max-w-md">
-    <h2 class="text-2xl font-bold text-center mb-6">📄 Ofcom PDF to CSV</h2>
+    <h2 class="text-2xl font-bold text-center mb-3">📄 Ofcom PDF to CSV</h2>
+    <p class="text-sm text-gray-300 text-center mb-6">
+      Upload an Ofcom-style licensed frequency PDF. This tool will extract all valid frequencies and convert them to a clean CSV file — ready for use in your coordination software or Inclusion Groups. <br><br>
+      After downloading the CSV, upload it to your Inclusion Group and make sure you assign the devices to apply the frequencies.
+    </p>
 
     <form id="uploadForm" action="/convert" method="post" enctype="multipart/form-data" target="downloadFrame" class="space-y-4">
       <div>
@@ -33,15 +37,18 @@
       </button>
     </form>
 
+    <iframe id="downloadFrame" name="downloadFrame" style="display:none;"></iframe>
+
     <p class="text-xs text-center text-gray-400 mt-6">Made by Dom Trotta with 💙</p>
   </div>
 
-  <!-- SweetAlert Loader -->
+  <!-- SweetAlert Loader & Success -->
   <script>
-    const form = document.querySelector("form");
-  
-    form.addEventListener("submit", function (e) {
-      const alert = Swal.fire({
+    const form = document.getElementById("uploadForm");
+    const iframe = document.getElementById("downloadFrame");
+
+    form.addEventListener("submit", function () {
+      Swal.fire({
         title: "Converting...",
         text: "Please wait while we process your PDF",
         allowOutsideClick: false,
@@ -50,14 +57,18 @@
           Swal.showLoading();
         },
       });
-  
-      // Automatically close after 4 seconds (adjust as needed)
-      setTimeout(() => {
-        Swal.close();
-      }, 4000);
+    });
+
+    iframe.addEventListener("load", function () {
+      Swal.fire({
+        icon: "success",
+        title: "Converted!",
+        text: "Your CSV file has been downloaded successfully.",
+        timer: 3000,
+        showConfirmButton: false
+      });
     });
   </script>
-  
 
 </body>
 </html>
