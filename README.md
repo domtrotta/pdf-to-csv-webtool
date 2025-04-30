@@ -2,7 +2,7 @@
 
 This is a self-hosted web tool built with Flask and pdfplumber to extract licensed frequency data from Ofcom-issued PDFs. It scans the entire document and extracts all valid frequencies (e.g., `654.22500 MHz`) into a clean, sorted CSV file.
 
-![App Screenshot](https://pdf.trottadomenico.co.uk/static/previe.png)
+![App Screenshot](https://pdf.trottadomenico.co.uk/static/preview.png)
 
 ---
 
