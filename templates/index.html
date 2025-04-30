@@ -46,7 +46,7 @@
   <script>
     const form = document.getElementById("uploadForm");
     const iframe = document.getElementById("downloadFrame");
-
+  
     form.addEventListener("submit", function () {
       Swal.fire({
         title: "Converting...",
@@ -57,18 +57,21 @@
           Swal.showLoading();
         },
       });
-    });
-
-    iframe.addEventListener("load", function () {
-      Swal.fire({
-        icon: "success",
-        title: "Converted!",
-        text: "Your CSV file has been downloaded successfully.",
-        timer: 3000,
-        showConfirmButton: false
-      });
+  
+      // Force close after 6 seconds (fallback)
+      setTimeout(() => {
+        Swal.close();
+        Swal.fire({
+          icon: "success",
+          title: "Downloaded!",
+          text: "Your CSV file was downloaded successfully.",
+          timer: 3000,
+          showConfirmButton: false
+        });
+      }, 6000);
     });
   </script>
+  
 
 </body>
 </html>
