@@ -49,7 +49,7 @@ After downloading the CSV:
 ---
 
 ### 🧑‍💻 Maintained by Dom Trotta
-For support or ideas, feel free to reach out or fork the repo.
+For support or ideas, feel free to reach out or fork the repo. or contact me using my website.
 
 ---
 
